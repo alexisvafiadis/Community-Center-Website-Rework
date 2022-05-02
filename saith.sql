@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2022 at 09:27 PM
+-- Generation Time: May 02, 2022 at 08:23 PM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -31,9 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `event` (
   `id` int(10) UNSIGNED NOT NULL,
   `datetime` datetime NOT NULL,
-  `name` varchar(40) COLLATE ascii_bin NOT NULL,
-  `description` varchar(2000) COLLATE ascii_bin DEFAULT NULL,
-  `organizers` varchar(50) COLLATE ascii_bin DEFAULT NULL
+  `name` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `description` varchar(2000) CHARACTER SET utf8 DEFAULT NULL,
+  `organizers` varchar(50) CHARACTER SET utf8 DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 -- --------------------------------------------------------
@@ -59,13 +59,22 @@ CREATE TABLE `request` (
 
 CREATE TABLE `user` (
   `id` int(10) UNSIGNED NOT NULL,
-  `email` varchar(100) COLLATE ascii_bin NOT NULL,
-  `password` varchar(50) COLLATE ascii_bin NOT NULL,
-  `firstname` varchar(50) COLLATE ascii_bin DEFAULT NULL,
-  `lastname` varchar(50) COLLATE ascii_bin NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `firstname` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `lastname` varchar(50) CHARACTER SET utf8 NOT NULL,
   `subscribed` tinyint(1) NOT NULL DEFAULT '1',
-  `admin` tinyint(1) NOT NULL DEFAULT '0'
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
+  `active` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=ascii COLLATE=ascii_bin;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`, `subscribed`, `admin`, `active`) VALUES
+(1, 'zead@gmail.com', '$2y$10$d4vwP/BqXx1Lu6kO07nN8.hzDhRWtc2SZnsZ9r72YffCaof1LIjua', 'zas', 'sz', 1, 0, 0),
+(2, 'alexisvafiadis@gmail.com', '$2y$10$zuGk9KmCUoepoqvZFBWoAeBh3NMHs8F4jpLD3L0p6f4oa.xYvvrB.', 'Alexis', 'Vafiadis', 1, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -109,7 +118,7 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
