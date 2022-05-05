@@ -1,6 +1,6 @@
 <?php
-include('config.php');
 if (isset($_POST["addevent"])) {
+include('config.php');
 $name = $_POST["name"];
 $date = date("Y-m-d", strtotime($_POST['date'])); 
 $time = $_POST["time"]. ":00";
@@ -15,7 +15,8 @@ $query_check_datetime = $conn->query($sql);
 VALUES('" . $name . "', '" . $date . "', '" . $time . "', '" . $description . "', '" . $organizers . "');";
       $query_new_event_insert = $conn->query($sql);
       if ($query_new_event_insert) {
-          echo "The event has been created successfully. You can now log in.";
+          echo "The event has been created successfully.";
+          redirect("panel.php");
       } else {
           echo "Sorry, the event registration has failed. Please go back and try again.";
       }
@@ -70,7 +71,7 @@ VALUES('" . $name . "', '" . $date . "', '" . $time . "', '" . $description . "'
 </select>
 </div>
   <div class="form-element">
-  <textarea rows = "5" cols = "60" name = "description">Describe the event</textarea>
+    <textarea rows = "5" cols = "60" name = "description">Describe the event</textarea>
   </div>
   <div class="form-element">
     <label>Organizers</label>

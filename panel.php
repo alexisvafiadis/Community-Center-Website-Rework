@@ -75,8 +75,10 @@ return $msg;
 </div>
 </div>
 <div>
-<a href="addevent.php">Add an event</a>
-  </div>
-  <div>
+  <a href="addevent.php">Add an event</a>
+</div>
+<div>
+  <a href="sendletter.php">Send a newsletter</a>
+</div>
 </body>
 </html>
