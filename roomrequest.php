@@ -1,11 +1,13 @@
 <html>
 <link rel="stylesheet" href="style.css">
 <form method="post" action="" name="roomrequest-form">
+<label>Telephone Number</label>
+    <input type="tel" name="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+  </div>
   <div class="form-element">
     <label>Room Number</label>
     <input type="number" name="roomnumber" min="1" max="5" required />
   </div>
-  <div class="form-element">
   <div class="form-element">
     <label>Date</label>
     <input type="date" name="date" required />
