@@ -59,36 +59,30 @@ class Registration
             && !empty($_POST['password_repeat'])
             && ($_POST['password_new'] === $_POST['password_repeat'])
         ) {
-            // create a database connection
-            $this->conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+            include("config.php");
+            $this->conn = $conn;
 
-            // if no connection errors (= working database connection)
             if (!$this->conn->connect_errno) {
 
-                // escaping, additionally removing everything that could be (html/javascript-) code
                 $email = $this->conn->real_escape_string(strip_tags($_POST['email'], ENT_QUOTES));
                 $firstname = $this->conn->real_escape_string(strip_tags($_POST['firstname'], ENT_QUOTES));
                 $lastname = $this->conn->real_escape_string(strip_tags($_POST['lastname'], ENT_QUOTES));
                 $password = $_POST['password_new'];
+                $subscribed = 0;
+                if (isset($_POST['subscribed'])) $subscribed = 1;
 
-                // crypt the user's password with PHP 5.5's password_hash() function, results in a 60 character
-                // hash string. the PASSWORD_DEFAULT constant is defined by the PHP 5.5, or if you are using
-                // PHP 5.3/5.4, by the password hashing compatibility library
                 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-                // check if user or email address already exists
                 $sql = "SELECT * FROM user WHERE email = '" . $email . "';";
                 $query_check_email = $this->conn->query($sql);
 
                 if ($query_check_email->num_rows == 1) {
                     $this->errors[] = "Sorry, that email address is already taken.";
                 } else {
-                    // write new user's data into database
-                    $sql = "INSERT INTO user (email, password, firstname, lastname)
-                            VALUES('" . $email . "', '" . $password_hash . "', '" . $firstname . "', '" . $lastname . "');";
+                    $sql = "INSERT INTO user (email, password, firstname, lastname, subscribed)
+                            VALUES('" . $email . "', '" . $password_hash . "', '" . $firstname . "', '" . $lastname . "','" . $subscribed . "');";
                     $query_new_user_insert = $this->conn->query($sql);
 
-                    // if user has been added successfully
                     if ($query_new_user_insert) {
                         $this->messages[] = "Your account has been created successfully. You can now log in.";
                     } else {

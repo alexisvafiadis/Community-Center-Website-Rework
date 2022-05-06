@@ -42,9 +42,14 @@ if (isset($registration)) {
     <div class="form-element">
     <label for="login_input_password_repeat">Repeat password</label>
     <input id="login_input_password_repeat" class="login_input" type="password" name="password_repeat" pattern=".{6,}" required autocomplete="off" />
-    <input type="submit"  name="register" value="Register" />
     </div>
 
+    <div class="form-element">
+    <label for="vehicle1"> Subscribe to our newsletter</label><br>
+    <input type="checkbox" id="subscribed" name="subscribed" value="true" checked>
+    </div>
+
+    <input type="submit"  name="register" value="Register" />
 </form>
 
 <!-- backlink -->

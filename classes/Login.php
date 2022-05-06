@@ -52,7 +52,8 @@ class Login
         } elseif (!empty($_POST['email']) && !empty($_POST['password'])) {
 
             // create a database connection, using the constants from config/db.php (which we loaded in index.php)
-            $this->conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+            include("config.php");
+            $this->conn = $conn;
             
             // if no connection errors (= working database connection)
             if (!$this->conn->connect_errno) {
@@ -62,7 +63,7 @@ class Login
 
                 // database query, getting all the info of the selected user (allows login via email address in the
                 // username field)
-                $sql = "SELECT email, password, firstname, lastname, admin
+                $sql = "SELECT *
                         FROM user
                         WHERE email = '" . $email . "';";
                 $result_of_login_check = $this->conn->query($sql);
@@ -83,6 +84,7 @@ class Login
                         $_SESSION['lastname'] = $result_row->lastname;
                         $_SESSION['admin'] = $result_row->admin;
                         $_SESSION['loggedin'] = 1;
+                        $_SESSION['subscribed'] = $result_row->subscribed;
 
                     } else {
                         $this->errors[] = "Wrong password. Try again.";
@@ -118,7 +120,6 @@ class Login
         if (isset($_SESSION['loggedin']) AND $_SESSION['loggedin'] == 1) {
             return true;
         }
-        // default return
         return false;
     }
 }
