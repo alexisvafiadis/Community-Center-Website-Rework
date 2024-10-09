@@ -1,5 +1,11 @@
 # Community Center Website Rework
-<img src = "main/gallery/Saith Seren.jpg" alt="Community Center Image" width="500px"/>
+<div style="display: flex; justify-content: space-between;">
+  <img src="main/gallery/Saith Seren.jpg" alt="Community Center Image" width="450px"/>
+  <img src="main/gallery/Cacen a llwyfan 10.jpg" alt="10 years of Saith Seren celebration" width="450px"/>
+</div>
+
+
+
 
 ## Introduction
 
