@@ -33,7 +33,12 @@ The new Saith Seren website includes the following key features:
 
 ## Project Structure
 
-The project is organized into several directories and files that handle different aspects of the website's functionality. Here's a structured breakdown:
+The project is organized into several directories and files that handle different aspects of the website's functionality. 
+- `main` folder: contains all the code and resources used
+- `PHPMailer` folder: contains the imported library which should remain untouched
+- `saith.sql` file: contains the SQL code for creating the website database.
+
+Here's a structured breakdown of the **main** folder:
 
 ### 1. Core Files
 These files are located in the root directory and contain the core functionality for the website:
