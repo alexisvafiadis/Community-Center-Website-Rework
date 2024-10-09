@@ -155,34 +155,35 @@ To enable automatic mailing functionality (for sending newsletters), you will ne
 
 ### 3. Database Setup
 
-Locate the `saith.sql` file (the database schema) and import it into your MySQL server. You can do this using a tool like **phpMyAdmin** or through the MySQL command line:
+1. Locate the `saith.sql` file (the database schema) and import it into your MySQL server. You can do this using a tool like **phpMyAdmin** or through the MySQL command line:
     ```
     mysql -u username -p saith < saith.sql
     ```
 
-Update the database connection details in the following files:
+2. Update the database connection details in the following files:
 
-- **config.php**: Enter your database credentials (host, database name, user, password) to connect to MySQL.
-- **calendar.php**: Update the database connection information here as well to enable event management functionality.
+- `config.php`: Enter your database credentials (host, database name, user, password) to connect to MySQL.
+- `calendar.php`: Update the database connection information here as well to enable event management functionality.
 
 ### 4. File Setup
 
-Clone or download the repository to your local machine:
-git clone https://github.com/YourUsername/saith-seren.git
+1. Clone or download the repository to your local machine:
+    ```
+    git clone https://github.com/YourUsername/saith-seren.git
+    ```
 
+3. All website files are stored in the `main` folder. If you rename the `main` folder, ensure that you update the file paths in `nav.php` to reflect the new folder name.
 
-All website files are stored in the `main` folder. If you rename the `main` folder, ensure that you update the file paths in `nav.php` to reflect the new folder name.
-
-Place the project folder in the `www` directory of your local server setup (WAMP/XAMPP/DevServer).
+4. Place the project folder in the `www` directory of your local server setup (WAMP/XAMPP/DevServer).
 
 ### 5. Running the Website Locally
 
-Start your local server (WAMP, XAMPP, or DevServer).
+1. Start your local server (WAMP, XAMPP, or DevServer).
 
-Open your browser and navigate to:
-
-http://localhost/your-folder-name/index.php
-
+2. Open your browser and navigate to:
+    ```
+    http://localhost/your-folder-name/index.php
+    ```
 
 Replace `your-folder-name` with the actual directory name where your project is stored.
 
@@ -195,14 +196,14 @@ To grant admin permissions to a user:
 
 ### 7. Mailing System Setup
 
-The website uses **PHPMailer** to handle email functionalities, such as sending newsletters and registration confirmations.
+1. The website uses **PHPMailer** to handle email functionalities, such as sending newsletters and registration confirmations.
 
-Ensure your SMTP settings are correctly configured in `panel.php` to send emails:
+2. Ensure your SMTP settings are correctly configured in `panel.php` to send emails:
 - Set the appropriate `Host`, `Username`, `Password`, and `Port` for the SMTP server you are using (e.g., Gmail SMTP).
 
 ### 8. Troubleshooting
 
 - If you encounter issues with sending emails, verify that your server allows outgoing SMTP connections.
-- Check that you have properly set up the `php_openssl.dll` extension in your `php.ini` file to allow secure email transmission.
+- Check that you have properly set up the `php_openssl.dll` extension in your `php.ini` file to allow secure email transmission. I had this issue.
 - If there are any database connection errors, ensure that the credentials in `config.php` and `calendar.php` are correct and that your MySQL server is running.
 
