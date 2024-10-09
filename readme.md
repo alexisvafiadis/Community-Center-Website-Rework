@@ -19,8 +19,6 @@ Our task was to **completely rework the website** to improve its user experience
 
 ## Features & Functionality
 
-The new Saith Seren website includes the following key features:
-
 - **Bilingual Support**: Seamless switching between Welsh and English content.
 - **Event Management System**: Staff can add, modify, and delete events directly through the website.
 - **Newsletter Management**: Users can subscribe to the newsletter, and admins can manage subscribers, upload newsletters to the website content and send them via email.
@@ -33,7 +31,6 @@ The new Saith Seren website includes the following key features:
 
 ## Project Structure
 
-The project is organized into several directories and files that handle different aspects of the website's functionality. 
 - `main` folder: contains all the code and resources used
 - `PHPMailer` folder: contains the imported library which should remain untouched
 - `saith.sql` file: contains the SQL code for creating the website database.
@@ -120,8 +117,6 @@ The `newsletters/` directory stores PDF files of newsletters that are uploaded b
 
 
 ## Technologies Used
-
-This project utilized a variety of technologies and libraries.
 
 ### 1. **Front-End**
 - **HTML5 & CSS3**: Used for the structure and styling of the web pages, ensuring that the website is user-friendly and responsive across devices.
