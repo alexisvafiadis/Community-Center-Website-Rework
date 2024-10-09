@@ -1,4 +1,5 @@
 # Community Center Website Rework
+<img src = "main/gallery/Saith Seren.jpg" alt="Community Center Image" width="500px"/>
 
 ## Introduction
 
